@@ -1,0 +1,27 @@
+# Archivos compilados de Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Datos locales generados en ejecución
+datos/
+
+# Visual Studio Code
+.vscode/
+
+# IntelliJ IDEA / Eclipse
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs y temporales
+*.log

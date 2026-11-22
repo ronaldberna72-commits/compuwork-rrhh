@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox spacing="12" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.compuwork.controlador.MainController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Panel izquierdo: Formulario CRUD y Gestión de Departamentos -->
+        <VBox spacing="10" minWidth="410" prefWidth="420">
+            <Label text="Gestión de Empleados" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+            <Label text="Departamento:"/>
+            <HBox spacing="8">
+                <ComboBox fx:id="comboDepartamentos" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="+ Nuevo" onAction="#crearDepartamento"/>
+            </HBox>
+
+            <Label text="Datos del Empleado" style="-fx-font-weight: bold;"/>
+            <GridPane vgap="6" hgap="8">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="130"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Apellido:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="CC:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtCc" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Fecha Contratación:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <DatePicker fx:id="fechaContratacion" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Salario Base:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="txtSalarioBase" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+
+            <HBox spacing="20">
+                <RadioButton fx:id="rbPermanente" text="Empleado Permanente" selected="true"/>
+                <RadioButton fx:id="rbTemporal" text="Empleado Temporal"/>
+            </HBox>
+
+            <VBox fx:id="panelPermanente" spacing="5">
+                <Label text="Bonificación por Antigüedad:"/>
+                <TextField fx:id="txtBonificacionAntiguedad"/>
+            </VBox>
+
+            <VBox fx:id="panelTemporal" spacing="5" visible="false">
+                <Label text="Fecha Fin Contrato:"/>
+                <DatePicker fx:id="fechaFinContrato" maxWidth="Infinity"/>
+                <Label text="Bonificación por Proyecto:"/>
+                <TextField fx:id="txtBonificacionProyecto"/>
+            </VBox>
+
+            <HBox spacing="8">
+                <Button text="Agregar" onAction="#agregarEmpleado" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Actualizar" onAction="#actualizarEmpleado" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button text="Eliminar" onAction="#eliminarEmpleado" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Limpiar" onAction="#limpiarFormulario" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+
+        <!-- Panel derecho: Buscador, Lista y Reportes -->
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <Label text="Lista de Empleados" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+            <HBox spacing="8">
+                <TextField fx:id="txtBuscar" promptText="Buscar por nombre, apellido o CC..." HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="comboFiltroDepartamento" prefWidth="190"/>
+            </HBox>
+
+            <ListView fx:id="listaEmpleados" VBox.vgrow="ALWAYS"/>
+
+            <HBox spacing="8">
+                <Button text="Generar Reporte" onAction="#generarReporte" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Exportar (.txt)" onAction="#exportarReporte" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <Label text="Reporte" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+            <TextArea fx:id="areaReporte" VBox.vgrow="ALWAYS" wrapText="true" editable="false"/>
+        </VBox>
+    </HBox>
+</VBox>
